@@ -37,7 +37,7 @@ docker pull redis
 ​	在CMD执行命令创建容器：
 
 ```
-docker run --name asp-redis -it -d redis
+docker run --name asp-redis -it -p 6379:6379 -d redis
 ```
 
 
