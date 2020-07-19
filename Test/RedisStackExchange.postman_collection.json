@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "6a472893-99a8-432f-af9b-615cda4de165",
+		"name": "RedisStackExchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "KeyExistsAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/KeyExistsAsync?key=leon",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"KeyExistsAsync"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "leon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/GetAsync?key=leon",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"GetAsync"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "leon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KeyDeleteAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/KeyDeleteAsync?key=leon",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"KeyDeleteAsync"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "leon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StringSetAsync",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "key",
+							"value": "leon",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "CuteLeon",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/StringSetAsync",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"StringSetAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StringIncrementAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/StringIncrementAsync?key=leon",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"StringIncrementAsync"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "leon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StringDecrementAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/RedisStackExchange/StringDecrementAsync?key=leon",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"RedisStackExchange",
+						"StringDecrementAsync"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "leon"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

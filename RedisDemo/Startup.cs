@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RedisDemo.RedisExtension;
 using StackExchange.Redis;
 
 namespace RedisDemo
@@ -30,14 +31,14 @@ namespace RedisDemo
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = "localhost:6379";
-                //options.ConfigurationOptions = new ConfigurationOptions()
-                //{
-                //    User = "leon",
-                //    Password = string.Empty,
-                //    ClientName = "RedisWebMVC",
-                //    Ssl = false,
-                //};
                 options.InstanceName = "AspRedis";
+            });
+
+            services.AddStackExchangeRedis(() =>
+            {
+                var options = new ConfigurationOptions();
+                options.EndPoints.Add("localhost:6379");
+                return options;
             });
         }
 
