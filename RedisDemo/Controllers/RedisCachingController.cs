@@ -10,11 +10,11 @@ namespace RedisDemo.Controllers
 {
     public class RedisCachingController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<RedisCachingController> _logger;
         private readonly IDistributedCache cache;
 
         public RedisCachingController(
-            ILogger<HomeController> logger,
+            ILogger<RedisCachingController> logger,
             IDistributedCache cache)
         {
             _logger = logger;
