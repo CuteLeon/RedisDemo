@@ -30,13 +30,13 @@ namespace RedisDemo
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = "localhost:6379";
-                options.ConfigurationOptions = new ConfigurationOptions()
-                {
-                    User = "leon",
-                    Password = string.Empty,
-                    ClientName = "RedisWebMVC",
-                    Ssl = false,
-                };
+                //options.ConfigurationOptions = new ConfigurationOptions()
+                //{
+                //    User = "leon",
+                //    Password = string.Empty,
+                //    ClientName = "RedisWebMVC",
+                //    Ssl = false,
+                //};
                 options.InstanceName = "AspRedis";
             });
         }

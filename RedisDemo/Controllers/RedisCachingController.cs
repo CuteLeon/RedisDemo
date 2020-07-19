@@ -21,15 +21,56 @@ namespace RedisDemo.Controllers
             this.cache = cache;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //cache.GetAsync();
-            //cache.GetStringAsync();
-            //cache.RefreshAsync();
-            //cache.RemoveAsync();
-            //cache.SetAsync();
-            //cache.SetStringAsync();
             return View();
+        }
+
+        [HttpGet("{controller}/GetAsync")]
+        public async Task<byte[]> GetAsync(string key)
+        {
+            this._logger.LogDebug($"Get Redis key={key}...");
+            return await cache.GetAsync(key);
+        }
+
+        [HttpGet("{controller}/GetStringAsync")]
+        public async Task<string> GetStringAsync(string key)
+        {
+            this._logger.LogDebug($"Get Redis String key={key}...");
+            return await cache.GetStringAsync(key);
+        }
+
+        [HttpGet("{controller}/RefreshAsync")]
+        public async Task<IActionResult> RefreshAsync(string key)
+        {
+            this._logger.LogDebug($"Refresh Redis key={key}...");
+            await cache.RefreshAsync(key);
+            return this.Ok($"Key = {key} has been refreshed.");
+        }
+
+        [HttpGet("{controller}/RemoveAsync")]
+        public async Task<IActionResult> RemoveAsync(string key)
+        {
+            this._logger.LogDebug($"Remove Redis key={key}...");
+            await cache.RemoveAsync(key);
+            return this.Ok($"Key = {key} has been removed.");
+        }
+
+        // TODO: 未能使用 Postman Post byte[] 类型的数据，因此暂时使用Base64编码传输
+        [HttpPost("{controller}/SetAsync")]
+        public async Task<IActionResult> SetAsync([FromForm] string key, [FromForm] string value)
+        {
+            this._logger.LogDebug($"Set Redis key={key} as value={value?.Length}bytes...");
+            await cache.SetAsync(key, Convert.FromBase64String(value));
+            return this.Ok($"Key = {key} has been setted.");
+        }
+
+        [HttpPost("{controller}/SetStringAsync")]
+        public async Task<IActionResult> SetStringAsync(string key, string value)
+        {
+            this._logger.LogDebug($"Set Redis String key={key} as value=\"{value}\"");
+            await cache.SetStringAsync(key, value);
+            return this.Ok($"Key = {key} has been setted.");
         }
     }
 }
