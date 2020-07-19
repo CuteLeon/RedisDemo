@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
 namespace RedisDemo
 {
@@ -24,6 +25,20 @@ namespace RedisDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Config Redis Service
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:6379";
+                options.ConfigurationOptions = new ConfigurationOptions()
+                {
+                    User = "leon",
+                    Password = string.Empty,
+                    ClientName = "RedisWebMVC",
+                    Ssl = false,
+                };
+                options.InstanceName = "AspRedis";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
