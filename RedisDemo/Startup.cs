@@ -34,12 +34,21 @@ namespace RedisDemo
                 options.InstanceName = "AspRedis";
             });
 
-            services.AddStackExchangeRedis(() =>
-            {
-                var options = new ConfigurationOptions();
-                options.EndPoints.Add("localhost:6379");
-                return options;
-            });
+            services.AddStackExchangeRedis(
+                () =>
+                {
+                    var options = new ConfigurationOptions();
+                    options.EndPoints.Add("localhost:6379");
+                    options.DefaultDatabase = 0;
+                    return options;
+                },
+                new Dictionary<int, string>
+                {
+                    { 0, RedisDatabases.DefaultDatabase },
+                    { 1, RedisDatabases.UserDatabase },
+                    { 2, RedisDatabases.TokenDatabase },
+                    { 3, RedisDatabases.AmountDatabase },
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

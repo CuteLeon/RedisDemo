@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using RedisDemo.RedisExtension;
 
 namespace RedisDemo.Controllers
 {
@@ -15,10 +15,11 @@ namespace RedisDemo.Controllers
 
         public RedisStackExchangeController(
             ILogger<RedisStackExchangeController> logger,
-            IDatabase database)
+            IServiceProvider provider)
         {
             _logger = logger;
-            this.database = database;
+            this.database = provider.GetService<Func<string, IDatabase>>()
+                .Invoke(RedisDatabases.UserDatabase);
         }
 
         public async Task<IActionResult> Index()
